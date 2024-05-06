@@ -1,0 +1,439 @@
+
+
+[global/wm]
+margin-bottom = 0
+
+margin-top = 0
+
+
+
+include-file = ~/.config/polybar/colors.ini
+
+
+
+[bar/main]
+monitor =
+
+monitor-fallback =
+
+monitor-strict = false
+
+
+bottom = true
+
+fixed-center = true
+
+width = 17%
+height = 60
+
+offset-x = 20
+offset-y = 20
+
+background = ${color.bg}
+
+foreground = ${color.fg}
+
+
+radius-top = 10.0
+radius-bottom = 10.0
+
+line-size = 2
+line-color = ${color.ac}
+
+border-bottom-size = 0
+border-color = ${color.ac}
+
+padding = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+
+font-0 = "Iosevka Nerd Font:size=13;3"
+font-1 = "Iosevka Nerd Font:bold:size=24;2"
+font-2 = "Iosevka Nerd Font:size=22;6"
+font-3 = "Source Code Pro:size=10;3"
+font-5 = "Helvetica Rounded:style=Bold:size=10.5;3"
+font-4 = "Montserrat Medium:style=Medium:size=12;3"
+font-6 = "Hurmit Nerd Font Mono:style=medium:pixelsize=17;3"
+font-7 = "Hack Nerd Font Mono:size=20;6"
+
+
+[bar/primary]
+inherit = bar/main
+offset-x = 96.9%
+offset-y = 15
+width = 2.5%
+height = 40
+bottom = false
+padding = 0
+module-margin-left = 0
+module-margin-right = 0
+background = ${color.bg}
+foreground = #44abff
+modules-center = sysmenu
+wm-restack = bspwm
+
+
+[bar/secondary]
+inherit = bar/main
+width = 7%
+height = 40
+offset-x = 3.8%
+offset-y = 15
+background = ${color.bg}
+foreground = ${color.white}
+bottom = false
+padding = 1
+module-margin-left = 0
+module-margin-right = 0
+modules-center = date 
+wm-restack = bspwm
+
+[bar/red]
+inherit = bar/main
+width = 4%
+height = 40
+offset-x =80.6%
+offset-y = 15
+background = ${color.bg}
+foreground = ${color.white}
+bottom = false
+padding = 1
+module-margin-left = 0
+module-margin-right = 0
+modules-center = wifirhmodule
+wm-restack = bspwm
+
+
+
+[bar/log]
+inherit = bar/main
+width = 2.5%
+height = 40
+offset-x = 1%
+offset-y = 15
+bottom = false
+foreground = ${color.white}
+background = ${color.bg}
+;80bfff
+padding = 0
+modules-center = my-text-label
+wm-restack = bspwm
+
+[bar/top]
+inherit = bar/main
+width = 6%
+height = 40
+offset-x = 90.5%
+;90.5%
+offset-y = 15
+bottom = false
+font-0 = "Iosevka Nerd Font:size=12;3"
+background = ${color.bg}
+foreground = ${color.white}
+padding = 1
+module-margin-left = 1
+module-margin-right = 1
+modules-center = alsa
+
+
+
+
+separator =
+
+spacing = 0
+
+dim-value = 1.0
+
+wm-name = openbox
+
+locale = 
+
+tray-position = none
+
+tray-detached = false
+
+tray-maxsize = 16
+
+tray-transparent = false
+
+tray-background = ${color.bg}
+
+tray-offset-x = 0
+tray-offset-y = 0
+
+tray-padding = 0
+
+tray-scale = 1.0
+
+wm-restack = bspwm
+
+
+enable-ipc = true
+
+click-left = 
+click-middle = 
+click-right =
+scroll-up =
+scroll-down =
+double-click-left =
+double-click-middle =
+double-click-right =
+
+cursor-click = 
+cursor-scroll = 
+
+
+
+
+
+
+
+[settings]
+throttle-output = 5
+throttle-output-for = 10
+
+throttle-input-for = 30
+
+screenchange-reload = false
+
+compositing-background = source
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+
+format-foreground = 
+format-background =
+format-underline =
+format-overline =
+format-spacing =
+format-padding =
+format-margin =
+format-offset =
+
+pseudo-transparency = false
+
+[module/my-text-label]
+type = custom/text
+content = %{T7}
+
+[module/date]
+type = internal/date
+
+interval = 1.0
+time = %k : %M
+date = %b %e
+format = <label>
+format-foreground = ${color.white}
+label = %date%  |  %time% 
+label-font = 6
+
+[module/red_m]
+;  (...other stuff...)
+label-connected = %{A1:nm-connection-editor:}%essid%%{A}
+
+
+[module/mpd]
+type = internal/mpd
+
+interval = 2
+
+format-online = <label-song>
+format-online-foreground = ${color.fg}
+
+label-song = "%title%"
+label-song-maxlen = 12
+label-song-ellipsis = true
+label-offline = "Offline"
+
+
+ 
+[module/term]
+type = custom/text
+
+content = "%{T3}%{T-}"
+content-foreground = ${color.black}
+content-background = ${color.bg}
+content-padding = 0
+
+click-left  = termite &
+
+[module/web]
+type = custom/text
+
+content = "%{T3}%{T-}"
+content-foreground = ${color.white}
+content-background = ${color.bg}
+content-padding = 0
+
+click-left  = firefox &
+
+[module/files]
+type = custom/text
+
+content = "%{T3}%{T-}"
+content-foreground = ${color.blue}
+content-background = ${color.bg}
+content-padding = 0
+
+click-left  = thunar &
+
+[module/edit]
+type = custom/text
+
+content = "%{T3}%{T-}"
+content-foreground = ${color.blue-gray}
+content-background = ${color.bg}
+content-padding = 0
+
+click-left  = geany &
+
+[module/apps]
+type = custom/text
+
+content = "%{T3}%{T-}"
+content-foreground = ${color.fg}
+content-background = ${color.bg}
+content-padding = 0
+
+click-left  = ~/.config/polybar/scripts/launcher &
+
+
+[module/sep]
+type = custom/text
+content = " | "
+content-font = 1
+
+content-foreground = ${color.fg}
+
+[module/sep2]
+type = custom/text
+content = "   "
+
+content-foreground = ${color.fg}
+
+[module/alsa]
+type = internal/alsa
+
+; Soundcard to be used
+; Usually in the format hw:# where # is the card number
+; You can find the different card numbers in `/proc/asound/cards`
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
+; Name of the master, speaker and headphone mixers
+; Use the following command to list available mixer controls:
+; $ amixer scontrols | sed -nr "s/.*'([[:alnum:]]+)'.*/\1/p"
+; If master, speaker or headphone-soundcard isn't the default, 
+; use `amixer -c # scontrols` instead where # is the number 
+; of the master, speaker or headphone soundcard respectively
+;
+; Default: Master
+master-mixer = Master
+
+; Optionally define speaker and headphone mixers
+; Default: none
+;;speaker-mixer = Speaker
+; Default: none
+;;headphone-mixer = Headphone
+
+; NOTE: This is required if headphone_mixer is defined
+; Use the following command to list available device controls
+; $ amixer controls | sed -r "/CARD/\!d; s/.*=([0-9]+).*name='([^']+)'.*/printf '%3.0f: %s\n' '\1' '\2'/e" | sort
+; You may also need to use `amixer -c # controls` as above for the mixer names
+; Default: none
+;;headphone-id = 9
+
+; Use volume mapping (similar to amixer -M and alsamixer), where the increase in volume is linear to the ear
+; Default: false
+;;mapped = true
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
+
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = <ramp-volume> <label-volume>
+format-volume-background = ${color.shade6}
+;${color.shade6}
+format-volume-padding = 2
+
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-muted = <label-muted>
+format-muted-prefix = 
+format-muted-prefix-font = 1
+format-muted-background = ${color.shade6}
+format-muted-padding = 2
+
+; Available tokens:
+;   %percentage% (default)
+label-volume = %percentage%%
+
+; Available tokens:
+;   %percentage% (default
+label-muted = " Muted"
+label-muted-foreground = ${color.foreground}
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-font = 1
+
+; If defined, it will replace <ramp-volume> when
+; headphones are plugged in to `headphone_control_numid`
+; If undefined, <ramp-volume> will be used for both
+; Only applies if <ramp-volume> is used
+ramp-headphones-0 = 
+
+click-right = "pavucontrol"
+
+[module/network]
+type = internal/network
+interface = wlp2s0
+click-left = kcmshell5 kcm_networkmanagement
+interval = 1.0
+accumulate-stats = true
+unknown-as-up = true
+
+format-connected = <label-connected>
+format-connected-foreground = ${color.white}
+format-disconnected = <label-disconnected>
+format-disconnected-foreground = ${color.gray}
+
+label-connected = 直
+label-disconnected = 睊
+
+[module/wifirhmodule]
+type = custom/text
+
+content = "%{T7}󱚾"
+content-foreground = ${color.yellow}
+content-background = ${color.bg}
+content-padding = 0
+
+
+click-right  = /home/sebz/.config/rofi/wifi/rofi-wifi-manager.sh &
+click-left = /home/sebz/.config/rofi/wifi/wifi-toggle.sh &
+
+[module/configsys]
+type = custom/text
+content = 󰄛
+
+click-right = "gnome-control-center"
+
+[module/sysmenu]
+type = custom/text
+content = 襤
+
+click-left = ~/.config/polybar/scripts/powermenu_alt
+
